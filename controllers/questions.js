@@ -3,33 +3,33 @@ const getQuestions = async (req, res, next) => {
     res.json(questions)
   }
 
-const getQuestion = async (req, res, next) => {
+const getQuestionById = async (req, res, next) => {
     const questions = await req.repositories.questionRepo.getQuestions()
     res.json(questions)
 }
 
-const postQuestion = async (req, res, next) => {
+const addQuestion = async (req, res, next) => {
     const questions = await req.repositories.questionRepo.getQuestions()
     res.json(questions)
 }
-const getQuestionAnswers = async (req, res, next) => {
+const getAnswers = async (req, res, next) => {
     const questions = await req.repositories.questionRepo.getQuestions()
     res.json(questions)
 }
-const postQuestionAnswer = async (req, res, next) => {
+const addAnswer = async (req, res, next) => {
     const questions = await req.repositories.questionRepo.getQuestions()
     res.json(questions)
 }
-const getQuestionAnswersID = async (req, res, next) => {
+const getAnswer = async (req, res, next) => {
     const questions = await req.repositories.questionRepo.getQuestions()
     res.json(questions)
 }
 
 module.exports = {
     getQuestions,
-    getQuestion,
-    postQuestion,
-    getQuestionAnswers,
-    postQuestionAnswer,
-    getQuestionAnswersID
+    getQuestionById,
+    addQuestion,
+    getAnswers,
+    addAnswer,
+    getAnswer
 }
