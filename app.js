@@ -21,7 +21,6 @@ app.use("/", questionRoutes);
 
 Question.hasMany(Answer);
 Answer.belongsTo(Question, { constraints: true, onDelete: "CASCADE" });
-// User.hasMany(Product);
 
 sequelize
   .sync()
