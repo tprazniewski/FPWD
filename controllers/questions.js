@@ -1,7 +1,7 @@
 const { Question } = require("../models/question");
 const { Answer } = require("../models/answer");
 
-const getQuestions = async (req, res, next) => {
+const getQuestions =  (req, res, next) => {
   // const questions = await req.repositories.questionRepo.getQuestions()
   // res.json(questions)
   Question.findAll()
@@ -16,7 +16,7 @@ const getQuestions = async (req, res, next) => {
     });
 };
 
-const getQuestionById = async (req, res, next) => {
+const getQuestionById =  (req, res, next) => {
   const { questionId } = req.params;
   console.log(questionId);
   Question.findByPk(questionId)
@@ -31,7 +31,7 @@ const getQuestionById = async (req, res, next) => {
     });
 };
 
-const addQuestion = async (req, res, next) => {
+const addQuestion =  (req, res, next) => {
   const { author, summary } = req.body;
   Question.create({ author, summary })
     .then((question) => {
@@ -45,7 +45,7 @@ const addQuestion = async (req, res, next) => {
     });
 };
 
-const getAnswers = async (req, res, next) => {
+const getAnswers =  (req, res, next) => {
   const { questionId } = req.params;
   Answer.findAll({ where: { questionId } })
     .then((answer) => {
@@ -58,7 +58,7 @@ const getAnswers = async (req, res, next) => {
 
     });
 };
-const addAnswer = async (req, res, next) => {
+const addAnswer =  (req, res, next) => {
   const { author, summary } = req.body;
   const { questionId } = req.params;
   Answer.create({ author, summary, questionId })
@@ -72,7 +72,10 @@ const addAnswer = async (req, res, next) => {
 
     });
 };
-const getAnswer = async (req, res, next) => {
+
+const getAnswer =   (req, res, next) => {
+  const { questionId, answerId } = req.params;
+  
 
 };
 
