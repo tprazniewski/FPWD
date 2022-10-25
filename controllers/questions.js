@@ -73,10 +73,14 @@ const addAnswer =  (req, res, next) => {
     });
 };
 
-const getAnswer =   (req, res, next) => {
+const getAnswer =  async (req, res, next) => {
   const { questionId, answerId } = req.params;
   
-
+  Answer.findOne({
+    where : { questionId ,id:answerId}
+  })
+  .then((a)=>res.status(200).json(a) )
+  
 };
 
 module.exports = {
