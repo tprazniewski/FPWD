@@ -19,13 +19,15 @@ app.use(makeRepositories(STORAGE_FILE_PATH));
 
 app.use("/", questionRoutes);
 
-Question.hasMany(Answer);
-Answer.belongsTo(Question, { constraints: true, onDelete: "CASCADE" });
+// Question.hasMany(Answer);
+// Answer.belongsTo(Question, { constraints: true, onDelete: "CASCADE" });
 
-sequelize
-  .sync()
+// sequelize
+//   .sync()
 
 
 app.listen(PORT, () => {
   console.log(`Responder app listening on port ${PORT}`);
 });
+
+module.exports = app; // for testing

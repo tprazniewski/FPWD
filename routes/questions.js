@@ -3,7 +3,7 @@ const router = express.Router()
 const {getQuestions, getQuestionById, addQuestion, getAnswers, addAnswer, getAnswer} = require('../controllers/questions')
 
 router.get('/', (_, res) => {
-  res.json({ message: 'Welcome to responder!' })
+  res.status(200).json({ message: 'Welcome to responder!' })
 })
 
 router.get('/questions', getQuestions)
