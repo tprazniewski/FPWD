@@ -33,16 +33,20 @@ const getQuestionById =  (req, res, next) => {
 
 const addQuestion =  (req, res, next) => {
   const { author, summary } = req.body;
-  Question.create({ author, summary })
-    .then((question) => {
-      console.log(question);
-      res.status(201).json(question);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(400).send(err.message)
-
-    });
+  if(author && summary) {
+    Question.create({ author, summary })
+      .then((question) => {
+        console.log(question);
+        res.status(201).json(question);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).send(err.message)
+  
+      });
+  }else{
+    res.status(404).json({ message: "author or summary wasn't filled in " })
+  }
 };
 
 const getAnswers =  (req, res, next) => {
@@ -61,16 +65,20 @@ const getAnswers =  (req, res, next) => {
 const addAnswer =  (req, res, next) => {
   const { author, summary } = req.body;
   const { questionId } = req.params;
-  Answer.create({ author, summary, questionId })
-    .then((answer) => {
-      console.log(answer);
-      res.status(201).json(answer);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(400).send(err.message)
-
-    });
+  if( author && summary){
+    Answer.create({ author, summary, questionId })
+      .then((answer) => {
+        console.log(answer);
+        res.status(201).json(answer);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).send(err.message)
+  
+      });
+  }else{
+    res.status(404).json({ message: "author or summary wasn't filled in " })
+  }
 };
 
 const getAnswer =  async (req, res, next) => {
