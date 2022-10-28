@@ -38,6 +38,24 @@ describe('Question', () => {
             });
       });
   })
+  describe('/questions ', () => {
+      it('it should have status 200', (done) => {
+        chai.request(app)
+            .get('/questions')
+            .end((err, res) => {
+                  res.should.have.status(200);
+              done();
+            });
+      });
+      it('it should be a type object', (done) => {
+        chai.request(app)
+            .get('/questions')
+            .end((err, res) => {
+                  res.body.should.be.a('array');
+              done();
+            });
+      });
+  })
 
 
 });
