@@ -11,7 +11,7 @@ describe('Question', () => {
 
 
     // GET route
-  describe('/GET Home', () => {
+  describe('/ method-GET', () => {
       it('it should have status 200', (done) => {
         chai.request(app)
             .get('/')
@@ -38,7 +38,7 @@ describe('Question', () => {
             });
       });
   })
-  describe('/questions ', () => {
+  describe('/questions method-GET', () => {
       it('it should have status 200', (done) => {
         chai.request(app)
             .get('/questions')
@@ -47,7 +47,7 @@ describe('Question', () => {
               done();
             });
       });
-      it('it should be a type object', (done) => {
+      it('it should be a type array', (done) => {
         chai.request(app)
             .get('/questions')
             .end((err, res) => {
@@ -55,6 +55,45 @@ describe('Question', () => {
               done();
             });
       });
+  })
+
+  describe('/questions/1 method-GET', () => {
+      it('it should have status 200', (done) => {
+        chai.request(app)
+            .get('/questions/1')
+            .end((err, res) => {
+                  res.should.have.status(200);
+              done();
+            });
+      });
+
+      it('it should be a type object', (done) => {
+        chai.request(app)
+            .get('/questions/1')
+            .end((err, res) => {
+                  res.body.should.be.a('object');
+                  console.log("console", res.body)
+              done();
+            });
+      });
+
+      it('it should have a property author', (done) => {
+        chai.request(app)
+            .get('/questions/1')
+            .end((err, res) => {
+              res.body.should.have.property('author');
+              done();
+            });
+      });
+      it('it should have a property summary', (done) => {
+        chai.request(app)
+            .get('/questions/1')
+            .end((err, res) => {
+              res.body.should.have.property('summary');
+              done();
+            });
+      });
+
   })
 
 
