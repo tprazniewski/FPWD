@@ -33,14 +33,18 @@ const getQuestionById =  (req, res, next) => {
 
 const addQuestion =  (req, res, next) => {
   const { author, summary } = req.body;
-  if(author && summary) {
+  const length = Object.keys(req.body).length
+
+  if(length>2){
+    return res.status(404).json({ message: "There was to many attributes passed to the server" })
+
+  }
+  if(author && summary ) {
     Question.create({ author, summary })
       .then((question) => {
-        console.log(question);
         res.status(201).json(question);
       })
       .catch((err) => {
-        console.log(err);
         res.status(400).send(err.message)
   
       });
@@ -64,6 +68,12 @@ const getAnswers =  (req, res, next) => {
 };
 const addAnswer =  (req, res, next) => {
   const { author, summary } = req.body;
+  const length = Object.keys(req.body).length
+
+  if(length>2){
+    return res.status(404).json({ message: "There was to many attributes passed to the server" })
+
+  }
   const { questionId } = req.params;
   if( author && summary){
     Answer.create({ author, summary, questionId })
