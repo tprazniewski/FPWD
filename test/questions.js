@@ -97,4 +97,52 @@ describe('Question', () => {
   })
 
 
+  describe('/questions method-POST', () => {
+    const validObj = {
+      author: "Tomasz Prazniewski",
+      summary: "Do I have a chance to get a Junior Node.js Dev position? That would be nice ;D"
+    }
+    const inValidObj = {
+      author: "",
+      summary: "Do I have a chance to get a Junior Node.js Dev position? That would be nice ;D"
+    }
+    const inValidObj2 = {
+      Title: "Title",
+      author: "Author",
+      summary: "Do I have a chance to get a Junior Node.js Dev position? That would be nice ;D"
+    }
+
+    it('it should have status 201 if Valid', (done) => {
+      chai.request(app)
+          .post('/questions')
+          .send(validObj)
+          .end((err, res) => {
+                res.should.have.status(201);
+            done();
+          });
+    });
+    it('it should have status 404 if invalid', (done) => {
+      chai.request(app)
+          .post('/questions')
+          .send(inValidObj)
+          .end((err, res) => {
+                res.should.have.status(404);
+            done();
+          });
+    
+    });
+
+    it('it should have status 404 if invalid', (done) => {
+      chai.request(app)
+          .post('/questions')
+          .send(inValidObj2)
+          .end((err, res) => {
+              res.body.should.have.property('message').eql('There was to many attributes passed to the server');
+            done();
+          });
+    
+    });
+})
+
+
 });

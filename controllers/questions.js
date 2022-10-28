@@ -49,7 +49,7 @@ const addQuestion =  (req, res, next) => {
   
       });
   }else{
-    res.status(404).json({ message: "author or summary wasn't filled in " })
+    res.status(404).json({ message: "Author or Summary field wasn't fullfilled" })
   }
 };
 
@@ -87,7 +87,7 @@ const addAnswer =  (req, res, next) => {
   
       });
   }else{
-    res.status(404).json({ message: "author or summary wasn't filled in " })
+    res.status(404).json({ message: "Author or Summary field wasn't fullfilled" })
   }
 };
 
