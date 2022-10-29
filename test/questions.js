@@ -6,7 +6,6 @@ require("dotenv").config();
 
 chai.use(chaiHttp);
 
-//Our parent block
 describe('Question', () => {
 
 
@@ -142,6 +141,17 @@ describe('Question', () => {
           });
     
     });
+})
+
+describe('Invalid Route', () =>{
+  it('This is invalid route',(done)=>{
+    chai.request(app)
+    .get('/ThisIsInvalidroute')
+    .end((err, res) => {
+        res.body.should.have.property('message').eql('This route is invalid');
+      done();
+    });
+  })
 })
 
 

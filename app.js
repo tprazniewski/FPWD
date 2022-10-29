@@ -18,7 +18,10 @@ app.use(json());
 app.use(makeRepositories(STORAGE_FILE_PATH));
 
 app.use("/", questionRoutes);
+app.use('*',(req,res,next)=>{
+  res.status(200).json({ message: 'This route is invalid' })
 
+})
 // Question.hasMany(Answer);
 // Answer.belongsTo(Question, { constraints: true, onDelete: "CASCADE" });
 
