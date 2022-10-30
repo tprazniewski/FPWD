@@ -290,6 +290,36 @@ describe('Before', () => {
       });
   })
 
+  describe('/questions/1/answers method-GET', () => {
+    it('it should have status 200', (done) => {
+      chai.request(app)
+          .get('/questions/1/answers')
+          .end((err, res) => {
+                res.should.have.status(200);
+            done();
+          });
+    });
+
+    it('it should be a length of 2 ', (done) => {
+     chai.request(app)
+         .get('/questions/1/answers')
+         .end((err, res) => {
+               res.body.length.should.be.eql(2);
+           done();
+         });
+   });
+
+    it('it should be a type array', (done) => {
+      chai.request(app)
+          .get('/questions/1/answers')
+          .end((err, res) => {
+                res.body.should.be.a('array');
+            done();
+          });
+    });
+})
+
+
   })
 
 })   
