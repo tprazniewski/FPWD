@@ -22,12 +22,13 @@ app.use('*',(req,res,next)=>{
   res.status(200).json({ message: 'This route is invalid' })
 
 })
+
+
+
 // Question.hasMany(Answer);
 // Answer.belongsTo(Question, { constraints: true, onDelete: "CASCADE" });
-
 // sequelize
-//   .sync()
-
+//   .sync({ force: true })
 
 app.listen(PORT, () => {
   console.log(`Responder app listening on port ${PORT}`);
