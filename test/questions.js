@@ -1,4 +1,5 @@
 const chai = require('chai');
+const {assert} = require('chai')
 const chaiHttp = require('chai-http');
 const app = require('../app');
 const should = chai.should();
@@ -120,6 +121,16 @@ describe('Before', () => {
                    done();
                  });
            });
+
+           it('it should be a length of 2 ', (done) => {
+            chai.request(app)
+                .get('/questions')
+                .end((err, res) => {
+                      res.body.length.should.be.eql(2);
+                  done();
+                });
+          });
+
            it('it should be a type array', (done) => {
              chai.request(app)
                  .get('/questions')
@@ -170,8 +181,6 @@ describe('Before', () => {
        })
    
    
-   
-   
      describe('Invalid Route', () =>{
        it('This is invalid route',(done)=>{
          chai.request(app)
@@ -186,6 +195,10 @@ describe('Before', () => {
    
    });
 
+
+  describe('Answer', () => {
+
+  })
 
 })   
 
