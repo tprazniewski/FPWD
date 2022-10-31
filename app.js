@@ -26,7 +26,10 @@ app.use('*',(req,res,next)=>{
   res.status(200).json({ message: 'This route is invalid' })
 
 })
-
+//Final Error handler// STH went really Wrong ;D
+app.use((err, req, res, next) => {
+  res.status(500).json({message: err.message})
+})
 
 
 // Question.hasMany(Answer);
