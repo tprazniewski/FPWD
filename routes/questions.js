@@ -2,19 +2,17 @@ const express = require('express')
 const router = express.Router()
 const {getQuestions, getQuestionById, addQuestion, getAnswers, addAnswer, getAnswer} = require('../controllers/questions')
 
-router.get('/', (_, res) => {
-  res.status(200).json({ message: 'Welcome to responder!' })
-})
 
-router.get('/questions', getQuestions)
-router.get('/questions/:questionId', getQuestionById)
 
-router.post('/questions', addQuestion)
+router.get('/', getQuestions)
+router.get('/:questionId', getQuestionById)
 
-router.get('/questions/:questionId/answers', getAnswers)
+router.post('/', addQuestion)
 
-router.post('/questions/:questionId/answers', addAnswer)
+router.get('/:questionId/answers', getAnswers)
 
-router.get('/questions/:questionId/answers/:answerId', getAnswer)
+router.post('/:questionId/answers', addAnswer)
+
+router.get('/:questionId/answers/:answerId', getAnswer)
 
 exports.questionRoutes = router

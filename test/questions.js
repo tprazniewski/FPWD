@@ -114,11 +114,11 @@ describe('Before', () => {
                    done();
                  });
            });
-           it('it shoud have an message "Welcome to responder!" ', (done) => {
+           it('it shoud have an message "Welcome to FPWD!" ', (done) => {
              chai.request(app)
                  .get('/')
                  .end((err, res) => {
-                       res.body.should.have.property('message').eql('Welcome to responder!');
+                       res.body.should.have.property('message').eql('Welcome to FPWD!');
    
                    done();
                  });

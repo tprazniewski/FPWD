@@ -17,7 +17,11 @@ app.use(urlencoded({ extended: true }));
 app.use(json());
 app.use(makeRepositories(STORAGE_FILE_PATH));
 
-app.use("/", questionRoutes);
+app.get('/', (_, res) => {
+  res.status(200).json({ message: 'Welcome to FPWD!' })
+})
+
+app.use("/questions", questionRoutes);
 app.use('*',(req,res,next)=>{
   res.status(200).json({ message: 'This route is invalid' })
 
