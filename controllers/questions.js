@@ -6,11 +6,9 @@ const getQuestions =  (req, res, next) => {
   // res.json(questions)
   Question.findAll()
     .then((allQuestions) => {
-      console.log(allQuestions);
       res.status(200).json(allQuestions);
     })
     .catch((err) => {
-      console.log(err);
       res.status(400).send(err.message)
 
     });
@@ -18,14 +16,11 @@ const getQuestions =  (req, res, next) => {
 
 const getQuestionById =  (req, res, next) => {
   const { questionId } = req.params;
-  console.log(questionId);
   Question.findByPk(questionId)
     .then((allQuestions) => {
-      console.log(allQuestions);
       res.status(200).json(allQuestions);
     })
     .catch((err) => {
-      console.log(err);
       res.status(400).send(err.message)
 
     });
@@ -57,11 +52,9 @@ const getAnswers =  (req, res, next) => {
   const { questionId } = req.params;
   Answer.findAll({ where: { questionId } })
     .then((answer) => {
-      console.log(answer);
       res.status(200).json(answer);
     })
     .catch((err) => {
-      console.log(err);
       res.status(400).send(err.message)
 
     });
@@ -78,11 +71,9 @@ const addAnswer =  (req, res, next) => {
   if( author && summary){
     Answer.create({ author, summary, questionId })
       .then((answer) => {
-        console.log(answer);
         res.status(201).json(answer);
       })
       .catch((err) => {
-        console.log(err);
         res.status(400).send(err.message)
   
       });
